@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Web.UI;
 using System.Data;
 using System.Web.UI.WebControls;
+using CRUD.Clase;
 
-namespace CRUD.Pages
+namespace CRUD
 {
     public partial class CRUD : System.Web.UI.Page
     {
-        readonly SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ConnectionString);
+        readonly SqlConnection con = SqlConecctionST .getInstance();
        
         
        public static string sID = "-1";

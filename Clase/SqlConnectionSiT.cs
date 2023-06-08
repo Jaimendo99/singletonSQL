@@ -9,12 +9,11 @@ namespace CRUD.Clase
 	{
 		private readonly SqlConnection conn;
 
-		private SqlConnection()
+		private SqlConnectionST()
 		{
 		}
 		
-
-		public static SqlConnectionST getInstance()
+		public static SqlConnection getInstance()
 		{
 			if (conn == null)
 			{

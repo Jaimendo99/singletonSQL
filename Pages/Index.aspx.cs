@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using CRUD.Clase;
+using CRUD.Utilities;
 
 namespace CRUD.Pages
 {
@@ -34,11 +35,27 @@ namespace CRUD.Pages
         }
 
         protected void BtnCreate_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Pages/CRUD.aspx?op=C");
-        }
+		{
+			// Obtener la fecha actual
+			DateTime fechaActual = DateTime.Now;
 
-        protected void BtnRead_Click(object sender, EventArgs e)
+			// Ruta del archivo de log
+			string rutaArchivoLog = Server.MapPath("~/Logs/log.txt");
+
+			try
+			{
+				// Escribir la fecha y "CREATE" en el archivo de log
+				string mensajeLog = $"CREATE {fechaActual}";
+				File.AppendAllText(rutaArchivoLog, mensajeLog + Environment.NewLine);
+
+				Response.Redirect("~/Pages/CRUD.aspx?op=C");
+			}
+			catch (Exception ex)
+			{
+			}
+		}
+
+		protected void BtnRead_Click(object sender, EventArgs e)
         {
             string id;
             Button BtnConsultar = (Button)sender;
